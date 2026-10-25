@@ -9,7 +9,8 @@
 //   05 Calendário agrícola . /calendario
 //   06 Dashboard comunidade  /comunidade
 //   07 Validação ........... (dentro da tela 04: mensagens de erro/sucesso)
-//   08 Coordenadora ........ /coordenadora
+//   08 Responsável pela comunidade /coordenadora
+//      └ Agricultoras da comunidade /coordenadora/agricultoras
 // =============================================================
 import { Navigate, Route, Routes } from 'react-router-dom';
 import RotaProtegida from './components/RotaProtegida';
@@ -21,6 +22,7 @@ import FormPlantio from './pages/FormPlantio';
 import Calendario from './pages/Calendario';
 import Dashboard from './pages/Dashboard';
 import Coordenadora from './pages/Coordenadora';
+import Agricultoras from './pages/Agricultoras';
 import NaoEncontrada from './pages/NaoEncontrada';
 
 /** Decide a "tela inicial" de acordo com quem está logada. */
@@ -52,9 +54,10 @@ export default function App() {
         <Route path="/comunidade" element={<Dashboard />} />
       </Route>
 
-      {/* Tela exclusiva da coordenadora */}
+      {/* Telas exclusivas da responsável pela comunidade (COORDENADORA) */}
       <Route element={<RotaProtegida perfis={['COORDENADORA']} />}>
         <Route path="/coordenadora" element={<Coordenadora />} />
+        <Route path="/coordenadora/agricultoras" element={<Agricultoras />} />
       </Route>
 
       {/* Qualquer outro endereço */}
